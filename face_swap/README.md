@@ -18,7 +18,7 @@ git clone https://github.com/davisking/dlib.git
 -Command to compile code on x86:
 
 ```
-g++ -std=c++17 -O3 -I../../../../../dlib/ dlib_facedetect_and_landmark.cpp source.cpp `pkg-config --cflags --libs opencv` -lpthread -lX11 -msse -msse2 -msse4.2 -mavx -o dlib_facedetect_and_landmark.o
+g++ -std=c++17 -O3 -I$workspace/dlib/ dlib_facedetect_and_landmark.cpp source.cpp `pkg-config --cflags --libs opencv` -lpthread -lX11 -msse -msse2 -msse4.2 -mavx -o dlib_facedetect_and_landmark.o
 ```
 
 -Vitis C++ Build Settings:
