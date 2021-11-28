@@ -4,21 +4,18 @@ Hackster project:
 
 Target device: ZCU104 evaluation board
 
--Download shape predictor model for face landmark:
-```
-wget https://github.com/davisking/dlib-models/blob/master/shape_predictor_68_face_landmarks.dat.bz2
-```
-
--Download dlib:
+-Command to compile code and run  on x86:
 
 ```
+cd $workspace
 git clone https://github.com/davisking/dlib.git
-```
-
--Command to compile code on x86:
-
-```
-g++ -std=c++17 -O3 -I$workspace/dlib/ dlib_facedetect_and_landmark.cpp source.cpp `pkg-config --cflags --libs opencv` -lpthread -lX11 -msse -msse2 -msse4.2 -mavx -o dlib_facedetect_and_landmark.o
+git clone https://github.com/Ali-Flt/vitis_projects.git
+cd vitis_projects/face_swap/without_vitis_ai/src
+g++ -std=c++17 -O3 -I$workspace/dlib/ face_swap_sw.cpp source.cpp `pkg-config --cflags --libs opencv` -lpthread -lX11 -msse -msse2 -msse4.2 -mavx -o face_swap_sw.o
+// download the shape predictor model for face landmark
+wget https://github.com/davisking/dlib-models/raw/master/shape_predictor_68_face_landmarks.dat.bz2
+bzip2 -d shape_predictor_68_face_landmarks.dat.bz2
+./face_swap_sw.o ../../data/video_input_640x360.webm
 ```
 
 -Vitis C++ Build Settings:
@@ -54,7 +51,7 @@ stdc++
 
 -To run face swap:
 ```
-./face_swap video_file_name
+./face_swap video_file_name.webm
 ```
 
 
