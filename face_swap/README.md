@@ -54,7 +54,7 @@ stdc++
 
 -To run face swap:
 ```
-./face_swap video_file_name.webm
+./face_swap video_file_name
 ```
 
 
